@@ -10,8 +10,7 @@ const hre = require("hardhat");
 
 describe.only("Fallback test", function() {
     beforeEach(async function() {
-        users = await ethers.getSigners();
-        player = users[0];
+        [player] = await ethers.getSigners();
         instance = await (await ethers.getContractFactory("Fallback")).attach(process.env.FALLBACK_ADDRESS);
         expect(await instance.owner()).to.not.equal(player.address);
 });

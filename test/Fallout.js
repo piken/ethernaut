@@ -15,8 +15,7 @@ const  FALLOUT_ABI=[
 
 describe.only("Fallout test", function() {
     beforeEach(async function() {
-        users = await ethers.getSigners();
-        player = users[0];
+        [player] = await ethers.getSigners();
         instance = new ethers.Contract(process.env.FALLOUT_ADDRESS, FALLOUT_ABI, ethers.provider);
         expect(await instance.owner()).to.not.equal(player.address);
 });

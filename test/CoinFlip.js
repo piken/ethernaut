@@ -10,7 +10,7 @@ const hre = require("hardhat");
 
 describe.only("CoinFlip test", function() {
     beforeEach(async function() {
-        (player) = await ethers.getSigners();
+        [player] = await ethers.getSigners();
         hacker = await (await ethers.getContractFactory("CoinFlipHacker")).deploy(process.env.COINFLIP_ADDRESS);
         coinFlip = await ethers.getContractAt("CoinFlip", process.env.COINFLIP_ADDRESS);
         await hacker.deployed();
