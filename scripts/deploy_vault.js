@@ -11,7 +11,8 @@ const { ethers } = require("hardhat");
 async function main() {
     [player] = await ethers.getSigners();
     vault = await ethers.getContractAt("Vault", process.env.VAULT_ADDRESS);
-    await vault.unlock(await ethers.provider.getStorageAt(process.env.VAULT_ADDRESS, 1));
+    transactionResponse = await vault.unlock(await ethers.provider.getStorageAt(process.env.VAULT_ADDRESS, 1));
+    await transactionResponse.wait();
     console.log("Vault is ", (await vault.locked()) == true ? "locked":"unlocked");
 }
 
