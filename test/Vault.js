@@ -16,7 +16,6 @@ describe.only("Vault hack", function() {
     describe("Hack test", function() {
         it("Should unlock the vault", async function() {
             expect(await vault.locked()).to.equal(true);
-            console.log(await ethers.provider.getStorageAt(process.env.VAULT_ADDRESS, 1));
             await vault.unlock(await ethers.provider.getStorageAt(process.env.VAULT_ADDRESS, 1));
             expect(await vault.locked()).to.equal(false);
         });
