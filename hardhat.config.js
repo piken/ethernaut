@@ -12,7 +12,7 @@ module.exports = {
       forking: {
         url: process.env.ALCHEMY_API_KEY,
         // blockNumber: 8535451
-      }
+      },
     },
   },  
   solidity: "0.8.17",
