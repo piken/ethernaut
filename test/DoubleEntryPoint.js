@@ -7,10 +7,6 @@ const {
 require('dotenv').config({ path: __dirname + '/.env' });
 
 const hre = require("hardhat");
-
-const  ALIENCODEX_ABI = [
-    "function owner() public view returns (address)"
-];
 describe.only("DWT Detection Bot", function() {
     beforeEach(async function() {
         [player] = await ethers.getSigners();
