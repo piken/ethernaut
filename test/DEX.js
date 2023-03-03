@@ -18,11 +18,11 @@ describe.only("Dex hack", function() {
         token2 = await ethers.getContractAt("SwappableToken", await dex.token2());
         await hre.network.provider.request({
             method: "hardhat_impersonateAccount",
-            params: [process.env.WHALE_ADDERSS],
+            params: [process.env.REALPLAYER_ADDERSS],
         });
-        whale = await ethers.getSigner(process.env.WHALE_ADDERSS);
-        await token1.connect(whale).transfer(hacker.address, await token1.balanceOf(process.env.WHALE_ADDERSS));
-        await token2.connect(whale).transfer(hacker.address, await token2.balanceOf(process.env.WHALE_ADDERSS));
+        realplayer = await ethers.getSigner(process.env.REALPLAYER_ADDERSS);
+        await token1.connect(realplayer).transfer(hacker.address, await token1.balanceOf(process.env.REALPLAYER_ADDERSS));
+        await token2.connect(realplayer).transfer(hacker.address, await token2.balanceOf(process.env.REALPLAYER_ADDERSS));
     });
     describe("Hack test", function() {
         it("Should drain one of token", async function() {
